@@ -1,0 +1,7 @@
+{
+  "name": "Generico",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
