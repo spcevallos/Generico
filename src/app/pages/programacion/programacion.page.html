@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Laboratorio de Informática</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+
+  <main class="contenedor">
+    <header class="introduccion">
+      <h3>LABORATORIO - 02</h3>
+      <h1>Programación</h1>
+      <p>Aprende los fundamentos de programación con ejercicios prácticos como C++, y aplica algoritmos.</p>
+    </header>
+
+<section >
+  @for (actividad of actividades; track actividad.id) {
+    <app-actividad 
+    [miActividad]="actividad"
+      (seleccionada)="mostarInstrucciones($event)"
+    ></app-actividad>
+  }
+</section>
+<section aria-label="Instrucciones" aria-live="polite">
+  @if (actividadActiva; as act) {
+    <h2>GUÍA DE PRÁCTICA</h2>
+    <h1>{{ act.titulo }}</h1>
+    <p>{{ act.resumen }}</p>
+
+    <h4>Recursos</h4>
+    <ul>
+      @for (r of act.recursos; track r) {
+        <li>{{ r }}</li>
+      }
+    </ul>
+
+    <h4>Pasos</h4>
+    <ol>
+      @for (paso of act.pasos; track $index) {
+        <li>{{ paso }}</li>
+      }
+    </ol>
+
+    <p><strong>Comprobación:</strong> {{ act.comprobacion }}</p>
+  } @else {
+    <p>Haz clic en "Ver instrucciones" para ver la guía de la práctica.</p>
+  }
+</section>
+    </main>
+    <ion-button (click)="volver()">Volver al inicio</ion-button>
+</ion-content>
